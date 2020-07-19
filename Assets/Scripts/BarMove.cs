@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BarMove : MonoBehaviour
 {
-    public int speed;
+   public int speed;
     public int bounceDegree;
     
     private float gap;
@@ -39,9 +39,9 @@ public class BarMove : MonoBehaviour
             //공 충돌지점 - 바 중간 == gap (중간부터 얼마나 멀리에서 충돌했는지)
             gap =  hitpoint.x - barCenterPoint.x;
             ballRb = collision.gameObject.GetComponent<Rigidbody2D>();
-
             ballRb.velocity = Vector2.zero;
-            ballRb.AddForce(new Vector2(gap * bounceDegree , collision.gameObject.GetComponent<BallMove>().speed));
+            //Debug.Log("x:"+(gap * bounceDegree)+" y:"+(Mathf.Sqrt(Mathf.Abs(Mathf.Pow(GameObject.Find("Ball").GetComponent<BallMove>().speed, 2) - Mathf.Pow(gap * bounceDegree, 2)))));
+            ballRb.AddForce(new Vector2(gap * bounceDegree ,Mathf.Sqrt(Mathf.Abs(Mathf.Pow(GameObject.Find("Ball").GetComponent<BallMove>().speed, 2)- Mathf.Pow(gap*bounceDegree,2)))));
         }
     }
 }

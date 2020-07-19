@@ -17,6 +17,6 @@ public class BallMove : MonoBehaviour
    
     void Update()
     {
-        
+        Debug.Log(this.GetComponent<Rigidbody2D>().velocity.magnitude);
     }
 }
